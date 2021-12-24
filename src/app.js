@@ -4,13 +4,9 @@ const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forcast = require('./utils/forcast')
 
-// const public = path.join(__dirname, '../public')
-// console.log(public)
-
-// console.log(__dirname)
-// console.log(__filename)
-
 const app = express()
+
+const port = process.env.PORT || 3000
 
 const viewsPAth = path.join(__dirname, '../templates/views')
 const viewPartials = path.join(__dirname, '../templates/partials')
@@ -61,11 +57,7 @@ app.get('/weather', (req, res) => {
         })
     })
 
-    // res.send({
-    //     forcast: 'its raining',
-    //     location: 'Home',
-    //     address: req.query.address
-    // })
+
 })
 
 app.get('/products', (req, res) => {
@@ -105,22 +97,7 @@ app.get('*', (req, res) => {
     })
 })
 
-// app.get('', (req, res) => {
-//     res.send("<h1>hello express</h1>")
-// })
 
-// app.get('/help', (req, res) => {
-//     res.send([{
-//         name: "parixit",
-//         age: 34
-//     },
-//     {name: "vidhi",
-//     age: 33}])
-// })
-
-// app.get('/about', (req, res) => {
-//     res.send('about page')
-// })
 
 app.get('/weather', (req, res) => {
     res.send({
@@ -129,6 +106,6 @@ app.get('/weather', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('server up on 3000')
+app.listen(port, () => {
+    console.log('server up on ' + port)
 })
